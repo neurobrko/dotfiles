@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# shellcheck source=/home/marpauli/.functions.sh
+. ~/.config/aliases/.functions.sh
+
+### General aliases
+# ll
+alias ll='ls -la --color=auto'
+# ll in human readable format
+alias lh='ls -lAh'
+# du all items in folder, human readable
+alias dh='du -chs *'
+# preview/find file using fzf and bat
+alias pf='fzf --preview "bat --color=always {}"'
+# cd to dir using fuzzy finder (fzf)
+alias cdf='cd "$(find . -type d | fzf)"'
+# (executed from / or /home might be slow)
+next_line
+# grep shorthand
+alias g='grep'
+# python 3.12 interpreter/REPL
+alias py='python3.12'
+# sqlite3 with --table
+alias sq='sqlite3 --table'
+# source ~/.config/aliases/.aliases
+alias sa='source ~/.config/aliases/.aliases'
+# edit aliases files ('ea h' for help)
+alias ea=edit_aliases
+# copy <text> to clipboard
+alias xc='xclip -sel clip'
+# print alias description
+alias h='display_alias_descriptions'
+# add file to dotfiles repo
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+### Dev aliases
+# neovim (LazyVim)
+fake_alias nv
+# open multiple files with fzf& bat in neovim
+alias nvf='nv $(find . -type f -not -path "*/\.git/*" -print | fzf -m --preview "bat --color=always {}")'
+# cd to nvim config folder
+alias nvc='cd ~/.config/nvim'
+# activate poetry environment
+alias ape=activate_poetry_env
+# SyncSuite rsync to remote
+alias r2r='/home/marpauli/code/elvis/SyncSuite/rsync_to_remote.py -cd /home/marpauli/code/sync_config/cml'
+# SyncSuite file map
+alias rfm='/home/marpauli/code/elvis/SyncSuite/file_map.py -cd /home/marpauli/code/sync_config/cml'
+
+# LOCAL/CUSTOM bash aliases
+# You can create custom local aliases in .local_aliases
+# or .custom_aliases file for some temporary aliases
+if [ -f ~/.config/aliases/.local_aliases ]; then
+  . ~/.config/aliases/.local_aliases
+fi
+if [ -f ~/.config/aliases/.custom_aliases ]; then
+  . ~/.config/aliases/.custom_aliases
+fi
+# source git aliases
+if [ -f ~/.config/aliases/.git_aliases ]; then
+  . ~/.config/aliases/.git_aliases
+fi
