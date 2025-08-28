@@ -99,7 +99,7 @@ get_alias_descriptions() {
 # alias description
 display_alias_descriptions() {
   echo ""
-  fill_line_with_string "BASH ALIASES DESCRIPTIONS" "$line_length" " "
+  fill_line_with_string "ALIASES DESCRIPTIONS" "$line_length" " "
   get_alias_descriptions ~/.config/aliases/.aliases
   get_alias_descriptions ~/.config/aliases/.git_aliases
   get_alias_descriptions ~/.config/aliases/.docker_aliases
