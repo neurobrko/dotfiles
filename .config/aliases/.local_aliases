@@ -1,0 +1,56 @@
+# This file contains local functions and aliases for CML projects
+
+# Local Custom Tools directory
+export LCT_DIR="$HOME/.config/local_custom_tools"
+
+setup_VM() {
+  # Fix this with use of $# and shift and shit like that!
+  local port=$(printf "%03d" $1)
+  "$LCT_DIR"/setup_VM.sh -i "$port" -a "$2"
+}
+
+# local UI debugging
+fe_debug() {
+  if [ "$1" != "" ]; then
+    local port=$(printf "%03d" $1)
+    cd /home/marpauli/code/cisco/_SIMPLE/ui || exit
+    VITE_CML_PROXY_BACKEND_SERVER=https://10.122.58.49:12$port yarn dev
+  else
+    e_err "No port number provided!"
+  fi
+}
+
+ssh_tunnel() {
+  local port=$(printf "%03d" $1)
+  echo "New terminal window will be open and ssh tunnel will be established..."
+  echo "Do NOT close the window until debugging is finished!"
+  sleep 3
+  gnome-terminal -- bash -c "ssh -p 13$port -L 5678:localhost:5678 root@10.122.58.49"
+}
+
+### Remote VM aliases
+# ssh to VM
+alias s='"$LCT_DIR"/ssh_to_vm.sh'
+# VM setup
+alias svm=setup_VM
+### Cisco Dev aliases
+# cd to <cisco> directory
+alias cdc='cd /home/marpauli/code/cisco'
+# cd to <repo> directory
+alias cdr='cd /home/marpauli/code/cisco/_SIMPLE'
+# cd to <repo>/ui directory
+alias cdu='cd /home/marpauli/code/cisco/_SIMPLE/ui'
+# Test Path Convertor tool
+alias tpc='/home/marpauli/.cache/pypoetry/virtualenvs/test-path-converter-1xglui3r-py3.12/bin/python3 /home/marpauli/code/TestPathConverter/test_path_converter.py'
+# run multiple tests silently from 'paths' file
+alias rmt="bash -c 'source /home/marpauli/.config/aliases/.functions.sh; run_multiple_tests'"
+# edit 'paths' file from 'rmt'
+alias rmte='nv ~/code/TestPathConverter/paths'
+# get cisco VPN ip address
+alias gip='"$CT_DIR"/get_ip.sh'
+# ssh tunnel on 5678 (debugger) 'st <VMport>'
+alias st='ssh_tunnel'
+# front-end debugging
+alias fd='fe_debug'
+# autheticate mock CML server
+alias amock='"$LCT_DIR"/auth_mock.sh'

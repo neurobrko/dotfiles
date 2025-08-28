@@ -128,8 +128,10 @@ fake_alias gd
 if [ -n "$BASH_VERSION" ]; then
   alias gd='git diff'
 fi
-# git diff numbered (with filenum works only in repo root)
+# git diff numbered 
 alias gdn=git_diff_numbered
+# (with filenum works only in repo root)
+next_line
 # git commit and push with message
 alias gcpm=git_commit_push
 # git checkout with tab completion

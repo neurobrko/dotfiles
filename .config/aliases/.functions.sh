@@ -102,6 +102,7 @@ display_alias_descriptions() {
   fill_line_with_string "BASH ALIASES DESCRIPTIONS" "$line_length" " "
   get_alias_descriptions ~/.config/aliases/.aliases
   get_alias_descriptions ~/.config/aliases/.git_aliases
+  get_alias_descriptions ~/.config/aliases/.docker_aliases
   get_alias_descriptions ~/.config/aliases/.local_aliases
   get_alias_descriptions ~/.config/aliases/.custom_aliases
   fill_line "$line_length" "-"
@@ -170,4 +171,15 @@ run_multiple_tests() {
     pytest -qq --disable-warnings --tb=no "$path"
   done
   e_succ "ALL TESTS FINISHED!"
+}
+
+cd_to_file() {
+  cwd=$(pwd)
+  cd "${1:-.}" || exit
+  file=$(fzf --preview 'bat --color=always {}')
+  if [ -z "$file" ]; then
+    cd "$cwd" || exit
+  else
+    cd "$(dirname "$file")" || exit
+  fi
 }

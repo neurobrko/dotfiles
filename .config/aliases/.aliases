@@ -16,6 +16,8 @@ alias pf='fzf --preview "bat --color=always {}"'
 alias cdf='cd "$(find . -type d | fzf)"'
 # (executed from / or /home might be slow)
 next_line
+# cd to file's directory
+alias cdtf=cd_to_file
 # grep shorthand
 alias g='grep'
 # python 3.12 interpreter/REPL
@@ -58,4 +60,8 @@ fi
 # source git aliases
 if [ -f ~/.config/aliases/.git_aliases ]; then
   . ~/.config/aliases/.git_aliases
+fi
+# source docker aliases
+if [ -f ~/.config/aliases/.docker_aliases ]; then
+  . ~/.config/aliases/.docker_aliases
 fi
