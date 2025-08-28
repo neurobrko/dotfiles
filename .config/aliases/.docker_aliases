@@ -1,0 +1,69 @@
+#!/bin/bash
+
+docker_start_stop() {
+  local cname="$1"
+  if [ -z "$cname" ]; then
+    e_info "Usage: docker_toggle <container_name_or_id>"
+    return 1
+  fi
+  state=$(docker inspect -f '{{.State.Status}}' "$cname" 2>/dev/null)
+  case $state in
+  "running")
+    docker stop "$cname"
+    e_info "Container '$cname' stopped."
+    ;;
+  "exited")
+    docker start "$cname"
+    e_info "Container '$cname' started."
+    ;;
+  *)
+    e_err "Container '$cname' not found or not in a valid state."
+    return 1
+    ;;
+  esac
+}
+
+docker_stop_all() {
+  for cont in $(docker ps -a --format {{.Names}}); do
+    docker stop $cont >/dev/null
+    e_info "Container $cont stopped."
+  done
+}
+
+docker_remove() {
+  container=$(docker rm $1)
+  e_info "Container $container removed."
+}
+
+docker_remove_all() {
+  for cont in $(docker ps -a --format {{.Names}}); do
+    docker rm $cont >/dev/null
+    e_info "Container $cont removed."
+  done
+}
+
+docker_remove_all_images() {
+  for img in $(docker image ls --format '{{.Repository}}:{{.Tag}}'); do
+    docker image rm $img >/dev/null
+    e_info "Image $img removed."
+  done
+}
+
+### Docker aliases
+# show docker containers
+alias da='docker ps -a'
+# start or stop docker <container>
+alias ds=docker_start_stop
+# stop all docker containers
+alias dsa=docker_stop_all
+# remove docker <container>
+alias dr=docker_remove
+# remove all docker containers
+alias dra=docker_remove_all
+# list docker images in 'repo:tag'
+alias dia='docker image ls --format {{.Repository}}:{{.Tag}}'
+# remove docker <image>
+alias dri='docker image rm'
+# remove all docker images
+alias dria=docker_remove_all_images
+
