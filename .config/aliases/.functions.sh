@@ -2,7 +2,7 @@
 
 # alias neovim, so it can be used in .aliases straight away
 # and won't mess aliases help
-alias nv='/home/marpauli/data/soft/nvim-linux-x86_64/bin/nvim'
+alias nv="$EDITOR"
 
 #functions
 e_err() {
@@ -100,11 +100,11 @@ get_alias_descriptions() {
 display_alias_descriptions() {
   echo ""
   fill_line_with_string "ALIASES DESCRIPTIONS" "$line_length" " "
-  get_alias_descriptions ~/.config/aliases/.aliases
-  get_alias_descriptions ~/.config/aliases/.git_aliases
-  get_alias_descriptions ~/.config/aliases/.docker_aliases
-  get_alias_descriptions ~/.config/aliases/.local_aliases
-  get_alias_descriptions ~/.config/aliases/.custom_aliases
+  get_alias_descriptions "$ALIASES"/.aliases
+  get_alias_descriptions "$ALIASES"/.git_aliases
+  get_alias_descriptions "$ALIASES"/.docker_aliases
+  get_alias_descriptions "$ALIASES"/.local_aliases
+  get_alias_descriptions "$ALIASES"/.custom_aliases
   fill_line "$line_length" "-"
 }
 
@@ -121,20 +121,20 @@ ea_help() {
 # edit aliases files
 edit_aliases() {
   if [ $# -eq 0 ]; then
-    nv ~/.config/aliases/.aliases
+    nv "$ALIASES"/.aliases
   elif [ $# -gt 1 ]; then
     e_err "Too many arguments!"
     ea_help
   else
     case "$1" in
     l)
-      nv ~/.config/aliases/.local_aliases
+      nv "$ALIASES"/.local_aliases
       ;;
     c)
-      nv ~/.config/aliases/.custom_aliases
+      nv "$ALIASES"/.custom_aliases
       ;;
     f)
-      nv ~/.config/aliases/.functions.sh
+      nv "$ALIASES"/.functions.sh
       ;;
     h)
       ea_help
@@ -156,21 +156,6 @@ activate_poetry_env() {
   else
     source "$env/bin/activate"
   fi
-}
-
-# run multiple test from 'paths' file
-# zsh is using different approach to command substitution, so it needs to
-# run in bash. See '.aliases'.
-run_multiple_tests() {
-  paths=()
-  while IFS= read -r line; do
-    paths+=("$line")
-  done < <(/home/marpauli/code/TestPathConverter/get_multiple_paths.py paths)
-  for path in "${paths[@]}"; do
-    echo "$path"
-    pytest -qq --disable-warnings --tb=no "$path"
-  done
-  e_succ "ALL TESTS FINISHED!"
 }
 
 cd_to_file() {

@@ -1,19 +1,20 @@
 # Aliases files
 
 All aliases should work both in `bash` and in `zsh`. Main alias file is sourced
-in main `.shellrc` file and all other files are sourced from main alias file.
+in main `.shellrc` file and all other files are sourced from main alias file
+(although zsh version might me more up to date).
 `.aliases` file is intended for general purpose aliases, while
 `.git_aliases` and `.docker_aliases` are for git and docker related aliases.
 In zsh git aliases are handled by git plugin and aliases shortcuts are made
 to match those in the plugin, even though some of them have altered behavior.
 `.local_aliases` is intended for env/project specific aliases and is not
 supposed to be tracked in *.dotfiles* git. `.custom_aliases` file is intended
-for user specific short term aliases and is completely up you, if you want to
-track it.
+for user specific short term aliases and is completely up to you, if you want
+to track it.
 
 `h` in the prompt will produce these alias descriptions:
 (See respective files and `functions.sh` for more details.)
-```sh
+```
                  BASH ALIASES DESCRIPTIONS                 
 
 @ /home/marpauli/.config/aliases/.aliases
@@ -35,7 +36,7 @@ track it.
    dot :: add file to dotfiles repo
 ----------------------- Dev aliases -----------------------
     nv :: neovim (LazyVim)
-   nvf :: open multiple files with fzf& bat in neovim
+   nvf :: open multiple files with fzf & bat in neovim
    nvc :: cd to nvim config folder
    ape :: activate poetry environment
    r2r :: SyncSuite rsync to remote

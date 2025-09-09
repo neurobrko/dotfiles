@@ -3,8 +3,11 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# aliases and tools directories
 export ALIASES="$HOME/.config/aliases"
 export CT_DIR="$HOME/.config/custom_tools/"
+export LCT_DIR="$HOME/.config/local_custom_tools"
+export EDITOR='/home/marpauli/data/soft/nvim-linux-x86_64/bin/nvim'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
