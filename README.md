@@ -7,7 +7,7 @@ This part is ment mainly as a reminder of what I need to install on a fresh syst
 ### some basics
 ```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl bat fzf
+sudo apt install -y curl bat fzf htop tmux
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 # desktop only (btop is not very useful on server)
 sudo apt install -y kitty terminator gnome-tweaks alacarte btop
