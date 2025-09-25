@@ -1,5 +1,5 @@
 # Fresh Ubuntu install
-This the set of apps, tools and widgets, that I usually use through all Ubuntu instances, that I am working on. Some are for desktop only, some for both desktop and server.
+This is the set of apps, tools and widgets, that I usually use through all Ubuntu instances, that I am working on. Some are for desktop only, some for both desktop and server.
 This part is ment mainly as a reminder of what I need to install on a fresh system.
 
 ## VPN, browser, cloud, terminal emulators
@@ -7,8 +7,9 @@ This part is ment mainly as a reminder of what I need to install on a fresh syst
 ### some basics
 ```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl bat fzf htop tmux zsh zsh-syntax-highlighting zsh-autosuggestions fonts-powerline git
+sudo apt install -y curl bat fzf htop tmux zsh zsh-syntax-highlighting zsh-autosuggestions fonts-powerline git python3-pip
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 cd $HOME
 mkdir -p data/soft
 ```
@@ -62,3 +63,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt install libdbus-1-dev libncursesw5-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
 cargo install ncspot
 ```
+
+TODO:
+gnome extensions
