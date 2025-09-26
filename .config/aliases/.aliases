@@ -24,6 +24,8 @@ alias g='grep'
 alias py='python3.12'
 # sqlite3 with --table
 alias sq='sqlite3 --table'
+# backup file and strip it of empty lines and comments
+alias clc='$CT_DIR/strip_file.sh'
 # source ~/.config/aliases/.aliases
 alias sa='source ~/.config/aliases/.aliases'
 # edit aliases files ('ea h' for help)
