@@ -16,3 +16,5 @@ vim.keymap.set(
 )
 -- teelscope file browser
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+-- Ctrl-Enter to insert a new line below in insert mode with cursor anywher on line
+vim.api.nvim_set_keymap("i", "<C-CR>", "<Esc>o", { noremap = true })

@@ -56,12 +56,14 @@ git_stash_drop() {
     e_warn "Please specify only one stash number!"
     return 1
   else
-    printf "Are you sure you want to drop stash #$1? (y/N): "
+    printf "Are you sure you want to drop stash #$1? (Y/N): "
     read -r confirm
     if [[ "$confirm" =~ ^[yY]$ ]]; then
       git stash drop stash@"{$1}"
+      e_info "Stash #$1 dropped."
+    else
+      e_warn "Aborted. Stash #$1 not dropped."
     fi
-    e_info "Stash #$1 dropped."
     return 0
   fi
 }
@@ -128,7 +130,7 @@ fake_alias gd
 if [ -n "$BASH_VERSION" ]; then
   alias gd='git diff'
 fi
-# git diff numbered 
+# git diff numbered
 alias gdn=git_diff_numbered
 # (with filenum works only in repo root)
 next_line
