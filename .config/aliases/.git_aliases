@@ -153,6 +153,8 @@ alias gstp=git_stash_patch
 alias gsta=git_apply_stash
 # gti stash drop <#>
 alias gstd=git_stash_drop
+# git restore
+alias grs='git restore'
 # run pre-commit on changed files only
 alias pc='pre-commit run --files $(git diff --name-only)'
 # git profile
