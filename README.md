@@ -8,7 +8,7 @@ that was inspired by setup of [Sneaky Cobra](https://news.ycombinator.com/item?i
 Add alias to your alias file:
 
 ```sh
-alias dot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 And don't forget to source it!
@@ -41,16 +41,17 @@ To make everything work, follow [fresh_install.md](https://github.com/neurobrko/
 Clone repo and create alias:
 
 ```sh
-alias dot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 echo .dotfiles >> .gitignore
-git clone --bare <git-repo-url> $HOME/.dotfiles
+git clone --bare https://github.com/neurobrko/dotfiles.git $HOME/.dotfiles
 dot checkout
 dot config --local status.showUntrackedFiles no
 ```
 
 Checkout might lead to error indicating which files should be backed up or
-removed before proceeding.
-Also don't forget to adjust some variables in `.zshrc`, e.g. `$EDITOR`.
+removed before proceeding. To backup those files, you can use
+`backup_dotfiles.sh` from `custom_tools`.
+Also don't forget to adjust some variables in `.zshrc` to suite your setup.
 
 ## What's inside?
 
