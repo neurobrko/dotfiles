@@ -246,6 +246,11 @@
 #: problem try setting text_fg_override_threshold to 0 to see if this
 #: is the cause of the problem.
 
+font_family      JetBrainsMono Nerd Font
+bold_font        JetBrainsMono Nerd Font Bold
+italic_font      JetBrainsMono Nerd Font Italic
+bold_italic_font JetBrainsMono Nerd Font Bold Italic
+
 #: }}}
 
 #: Cursor customization {{{

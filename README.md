@@ -31,6 +31,7 @@ All common git commands will work as expected.
 ```sh
 dot diff
 dot status
+dot add -u
 ...
 ```
 
@@ -55,6 +56,7 @@ Also don't forget to adjust some variables in `.zshrc` to suite your setup.
 
 ## What's inside?
 
-For details of functions and aliases refer to README.md file in
-`.config/aliases` and to respective files in this directory. Most of the
-functionality is self-explanatory or supplemented with comments.
+For details of functions and aliases refer to README.md files in
+`.config/aliases` and `.config/custom_tools` and to respective files in those
+directories. Most of the functionality is self-explanatory or supplied
+with comments.

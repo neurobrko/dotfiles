@@ -1,7 +1,7 @@
 #!/bin/bash
-
-# Get the IP address of the cscotun0 interface
-ip_address=$(ip addr show cscotun0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)
+interface="cscotun0"
+# Get the IP address of the set interface
+ip_address=$(ip addr show $interface | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)
 
 if [ -z "$ip_address" ]; then
   echo "Could not retrieve IP address for cscotun0!"

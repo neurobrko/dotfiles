@@ -14,8 +14,10 @@ to track it.
 
 `h` in the prompt will produce these alias descriptions:
 (See respective files and `functions.sh` for more details.)
+
 ```
-                 BASH ALIASES DESCRIPTIONS                 
+
+                   ALIASES DESCRIPTIONS                   
 
 @ /home/marpauli/.config/aliases/.aliases
 --------------------- General aliases ---------------------
@@ -29,17 +31,19 @@ to track it.
      g :: grep shorthand
     py :: python 3.12 interpreter/REPL
     sq :: sqlite3 with --table
+   bsf :: Backup and Strip File of empty lines and comments
     sa :: source ~/.config/aliases/.aliases
     ea :: edit aliases files ('ea h' for help)
     xc :: copy <text> to clipboard
+   twd :: pack 'cwd' to tar.gz in parent with 'cwd' name
      h :: print alias description
    dot :: add file to dotfiles repo
 ----------------------- Dev aliases -----------------------
     nv :: neovim (LazyVim)
-   nvf :: open multiple files with fzf & bat in neovim
+   nvf :: open multiple files with fzf& bat in neovim
    nvc :: cd to nvim config folder
    ape :: activate poetry environment
-   r2r :: SyncSuite rsync to remote
+   rtr :: SyncSuite rsync to remote
    rfm :: SyncSuite file map
 
 @ /home/marpauli/.config/aliases/.git_aliases
@@ -47,7 +51,7 @@ to track it.
    gst :: git status
    gfa :: git fetch all
     gd :: git diff
-   gdn :: git diff numbered 
+   gdn :: git diff numbered
           (with filenum works only in repo root)
   gcpm :: git commit and push with message
    gco :: git checkout with tab completion
@@ -57,6 +61,7 @@ to track it.
   gstp :: git stash patch <#>
   gsta :: git stash apply <#>
   gstd :: gti stash drop <#>
+   grs :: git restore
     pc :: run pre-commit on changed files only
     gp :: git profile
 
