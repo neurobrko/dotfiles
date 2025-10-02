@@ -18,3 +18,5 @@ vim.keymap.set(
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 -- Ctrl-Enter to insert a new line below in insert mode with cursor anywher on line
 vim.api.nvim_set_keymap("i", "<C-CR>", "<Esc>o", { noremap = true })
+-- remap double space to find files in cwd
+vim.keymap.set("n", "<Space><Space>", ":Telescope find_files<CR>", { noremap = true })
