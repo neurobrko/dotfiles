@@ -15,7 +15,7 @@ export EDITOR="$HOME/data/soft/nvim-linux-x86_64/bin/nvim"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="agnostic-elvis"
 # ZSH_THEME="awesomepanda"
-ZSH_THEME="zhann"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,6 +85,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Load custom theme
+source $HOME/.config/zsh/zhann-elvis.zsh-theme
 
 # User configuration
 

@@ -53,7 +53,7 @@ if [ $# -lt 1 ]; then
 fi
 
 if [ $e_flag = false ]; then
-  bkp_ext=".bak"
+  bkp_ext="bak"
 else
   bkp_ext="${bkp_ext#.}" # remove leading . if present
 fi

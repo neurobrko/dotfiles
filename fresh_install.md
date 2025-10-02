@@ -19,6 +19,10 @@ cd $HOME
 mkdir -p data/soft
 ```
 
+>`fonts-powerline` is needed for ohmyzsh themes
+>`pyton3-venv` is generally useful, but also required for NeoVim debugging
+>`npm` is needed for installing some NeoVim plugins (e.g. Markdown linter)
+
 Install ohmyzsh
 
 ```sh
@@ -49,10 +53,25 @@ sudo tar xvf latest-fzf.tar.gz -C /usr/bin
 
 Update node.js for Copilot to work in NeoVim
 
-```
+```sh
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
+
+To display proper fonts/icons in NeoVim, install Nerd Fonts
+(I use NeoVim in kitty terminal, which has them set up.)
+
+```sh
+cd $(mktemp -d)
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+# install the fonts system-wide, or in ~/.local/share/fonts just for user
+sudo unzip JetBrainsMono.zip -d /usr/share/fonts/JetBrainsMonoNF
+fc-cache -fv
+# optional: verify installation
+fc-list | grep "JetBrains"
+```
+
+>**Run NeoVim only after cloning dotfiles repo to prevent unnecessary configs.**
 
 Some desktop only tools
 
@@ -107,6 +126,8 @@ Or install snap from App Store.
 ```sh
 curl -s https://install.zerotier.com | sudo bash
 ```
+
+Install Nextcloud and setup sync.
 
 ### nchat & ncspot
 

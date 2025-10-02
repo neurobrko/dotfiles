@@ -1,0 +1,5 @@
+cd ~
+layout horizontal
+launch nchat
+launch ncspot
+focus
