@@ -102,6 +102,9 @@ return {
       vim.keymap.set("n", "<F12>", function()
         dap.step_out()
       end)
+      vim.keymap.set("n", "<F9>", function()
+        dap.toggle_breakpoint()
+      end)
     end,
   },
 }

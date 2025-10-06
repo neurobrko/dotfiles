@@ -1,6 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-
+require("config.dap") -- Set options
 -- LuaSnip
 vim.cmd([[
 " Use Tab to expand and jump through snippets
