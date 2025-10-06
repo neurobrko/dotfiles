@@ -101,7 +101,7 @@ git_commit_push() {
     return 1
   else
     local message="$*"
-    git add .
+    git add -u
     git commit -m "$message"
     git push
     e_succ -e "\nCommit '$message' succesfully pushed to branch: '$(git branch --show-current)'."
