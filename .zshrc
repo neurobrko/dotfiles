@@ -16,3 +16,6 @@ source $HOME/.config/zsh/zhann-elvis.zsh-theme
 source $ALIASES/.aliases
 autoload -Uz zcalc
 source <(fzf --zsh)
+for file in $LCT_DIR/*.scfg(N); do
+  [ -r "$file" ] && source "$file"
+done

@@ -126,3 +126,8 @@ source <(fzf --zsh)
 
 # to create clean file without comments and empty lines use:
 # awk '!/^[[:space:]]*($|#)/' .zshrc_comments > .zshrc
+
+# source configuration specific for each system
+for file in $LCT_DIR/*.scfg(N); do
+  [ -r "$file" ] && source "$file"
+done
