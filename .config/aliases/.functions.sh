@@ -85,10 +85,10 @@ get_alias_descriptions() {
       elif [[ "$line" =~ ^# ]]; then
         description="${line#"# "}"
       elif [[ "$line" =~ ^(alias|fake_alias) ]]; then
-        alias_name=$(printf "%6s" "$(echo "$line" | cut -d'=' -f1 | awk '{print $2}')")
+        alias_name=$(printf "%10s" "$(echo "$line" | cut -d'=' -f1 | awk '{print $2}')")
         echo "$alias_name :: $description"
       elif [[ $line == "next_line" ]]; then
-        printf "%*s%s\n" "10" "" "$description"
+        printf "%*s%s\n" "14" "" "$description"
       else
         description=""
       fi
@@ -167,4 +167,9 @@ cd_to_file() {
   else
     cd "$(dirname "$file")" || exit
   fi
+}
+
+mkdir_and_cd() {
+  mkdir -p "$1" || e_err "Failed to create directory: $1"
+  cd "$1" || e_err "Failed to navigate to directory: $1"
 }

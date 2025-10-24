@@ -18,6 +18,8 @@ alias cdf='cd "$(find . -type d | fzf)"'
 next_line
 # cd to file's directory
 alias cdtf=cd_to_file
+# mkdir & cd to it
+alias mkcd=mkdir_and_cd
 # grep shorthand
 alias g='grep'
 # python 3.12 interpreter/REPL
