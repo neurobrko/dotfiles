@@ -157,3 +157,12 @@ git clone https://github.com/hrkfdn/ncspot
 cargoo build --release
 # make alias, link or add to $PATH
 ```
+### yazi file manager
+Install yazi file manager and simple neovim yazi pugin.
+```sh
+# https://yazi-rs.github.io/docs/installation/
+# prerequisites
+apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+# yazi installation
+cargo install yazi-fm yazi-cli
+```
