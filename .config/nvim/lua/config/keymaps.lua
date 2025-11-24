@@ -1,8 +1,12 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- Unmap LazyVim's default terminal toggle keymap first
+vim.keymap.del({ "n", "t" }, "<C-/>")
+-- Define custom toggle for floating terminal
 vim.keymap.set(
-  "n",
+  { "n", "t" },
   "<C-/>",
   "<cmd>ToggleTerm direction=float<cr>",
   { noremap = true, silent = true, desc = "Float Toggle Terminal" }

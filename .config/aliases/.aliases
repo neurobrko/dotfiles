@@ -10,6 +10,8 @@ alias ll='ls -la --color=auto'
 alias lh='ls -lAh'
 # du all items in folder, human readable
 alias dh='du -chs *'
+# yazi file manager
+alias y='yazi'
 # preview/find file using fzf and bat
 alias pf='fzf --preview "bat --color=always {}"'
 # cd to dir using fuzzy finder (fzf)
