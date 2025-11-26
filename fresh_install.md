@@ -62,13 +62,16 @@ To display proper fonts/icons in NeoVim, install Nerd Fonts
 (I use NeoVim in kitty terminal, which has them set up.)
 
 ```sh
+# List and preview of available Nerd Fonts:
+# https://www.nerdfonts.com/font-downloads
+sudo mkdir /usr/share/fonts/NerdFont
 cd $(mktemp -d)
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip
 # install the fonts system-wide, or in ~/.local/share/fonts just for user
-sudo unzip JetBrainsMono.zip -d /usr/share/fonts/JetBrainsMonoNF
+sudo unzip 0xProto.zip -d /usr/share/fonts/NerdFont/0xProtoNerdFont
 fc-cache -fv
 # optional: verify installation
-fc-list | grep "JetBrains"
+fc-list | grep "0xProto"
 ```
 
 >**Run NeoVim only after cloning dotfiles repo to prevent unnecessary configs.**
@@ -78,7 +81,6 @@ Some desktop only tools
 ```sh
 sudo apt install -y kitty terminator gnome-tweaks alacarte btop cargo \
 gdebi libreoffice-writer libreoffice-calc
-
 ```
 
 Don't mind about the looks of kitty or zsh right now, it will be sorted out
@@ -157,8 +159,11 @@ git clone https://github.com/hrkfdn/ncspot
 cargoo build --release
 # make alias, link or add to $PATH
 ```
+
 ### yazi file manager
-Install yazi file manager and simple neovim yazi pugin.
+
+Install yazi file manager and simple neovim yazi plugin.
+
 ```sh
 # https://yazi-rs.github.io/docs/installation/
 # prerequisites
