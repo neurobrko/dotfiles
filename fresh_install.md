@@ -12,7 +12,7 @@ to install on a fresh system.
 ```sh
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl bat fzf htop tmux zsh fonts-powerline git python3-pip \
-python3-venv npm
+python3-venv npm git-delta eza
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 cd $HOME
@@ -80,11 +80,32 @@ Some desktop only tools
 
 ```sh
 sudo apt install -y kitty terminator gnome-tweaks alacarte btop cargo \
-gdebi libreoffice-writer libreoffice-calc
+gdebi libreoffice-writer libreoffice-calc localsend meld
 ```
+
+>**BEWARE:** Check if localsend is available in your distribution's repo.
+>I found it in Ubuntu 24.04, but not in 25.04.
 
 Don't mind about the looks of kitty or zsh right now, it will be sorted out
 after cloning .dotfiles
+
+To setup git-delta and meld, insert these lines to your `~/.gitconfig`
+
+```sh
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  side-by-side = true
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+[merge]
+  conflictStyle = zdiff3
+ tool = meld
+[mergetool]
+ prompt = false
+```
 
 Install Gnome Shell extensions
 
@@ -171,3 +192,25 @@ apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
 # yazi installation
 cargo install yazi-fm yazi-cli
 ```
+
+### Installed tools summary
+
+Here is the list of some tools installed above, with brief description and
+links to their repositories or websites.
+
+- **alacarte** - menu editor for GNOME
+- **bat** - cat clone with syntax highlighting [github](https://github.com/sharkdp/bat)
+- **btop** - resource monitor (htop alternative) [github](https://github.com/aristocratos/btop)
+- **eza** - ls clone with more features [github](https://github.com/eza-community/eza)
+- **fzf** - command-line fuzzy finder [github](https://github.com/junegunn/fzf)
+- **gdebi** - simple tool to install deb packages
+- **git-delta** - git diff viewer with syntax highlighting [github](https://github.com/dandavison/delta)
+- **kitty** - GPU based terminal emulator [website](https://sw.kovidgoyal.net/kitty/)
+- **localsend** - easy and private file sharing over LAN [website](https://localsend.org/)
+- **meld** - visual diff and merge tool [website](https://meldmerge.org/)
+- **nchat** - terminal based chat client for WhatsApp [github](https://github.com/d99kris/nchat)
+- **ncspot** - terminal based Spotify client [github](https://github.com/hrkfdn/ncspot)
+- **nerd fonts** - patched fonts with icons [website](https://www.nerdfonts.com) | [download](https://www.nerdfonts.com/font-downloads)
+- **terminator** - terminal emulator with tiling support [website](https://gnome-terminator.org/) | [docs](https://gnome-terminator.readthedocs.io/en/latest)
+- **tmux** - terminal multiplexer [github wiki](https://github.com/tmux/tmux/wiki)
+- **yazi** - terminal based file manager [website](https://yazi-rs.github.io/) | [github](https://github.com/sxyazi/yazi)

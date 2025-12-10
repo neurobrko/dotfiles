@@ -4,10 +4,8 @@
 . ~/.config/aliases/.functions.sh
 
 ### General aliases
-# ll
-alias ll='ls -la --color=auto'
-# ll in human readable format
-alias lh='ls -lAh'
+# ll pimped with eza
+alias ll="eza -lag --icons=always --group-directories-first --smart-group --time-style='+%d %b %y %H:%M'"
 # du all items in folder, human readable
 alias dh='du -chs *'
 # yazi file manager
