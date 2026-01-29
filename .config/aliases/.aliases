@@ -43,8 +43,8 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ### Dev aliases
 # neovim (LazyVim)
 fake_alias nv
-# open multiple files with fzf& bat in neovim
-alias nvf='nv $(find . -type f -not -path "*/\.git/*" -print | fzf -m --preview "bat --color=always {}")'
+# open multiple files with fzf & bat in neovim
+alias fnv='nv $(find . -type f -not -path "*/\.git/*" -print | fzf -m --preview "bat --color=always {}")'
 # cd to nvim config folder
 alias nvc='cd ~/.config/nvim'
 # activate poetry environment

@@ -7,6 +7,7 @@ ZSH_THEME=""
 DISABLE_AUTO_TITLE="true"
 plugins=(
   git
+  virtualenvwrapper
   zsh-syntax-highlighting
   zsh-autosuggestions
   z
@@ -19,3 +20,6 @@ source <(fzf --zsh)
 for file in $LCT_DIR/*.scfg(N); do
   [ -r "$file" ] && source "$file"
 done
+
+# opencode
+export PATH=/home/marpauli/.opencode/bin:$PATH

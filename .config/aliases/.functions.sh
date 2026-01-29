@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # alias neovim, so it can be used in .aliases straight away
 # and won't mess aliases help
@@ -172,4 +172,23 @@ cd_to_file() {
 mkdir_and_cd() {
   mkdir -p "$1" || e_err "Failed to create directory: $1"
   cd "$1" || e_err "Failed to navigate to directory: $1"
+}
+
+# WIP: I don't like this implementation yet
+fuzzy_nvim() {
+  local files return_code
+  files=$(find . -type f -not -path "*/\.git/*" -print0 | fzf -m --read0 --preview "bat --color=always {}" --print0)
+  return_code=$?
+  if [ $return_code -ne 0 ]; then
+    return
+  else
+    # Split null-separated files into array and pass all as arguments (portable Bash/Zsh)
+    if [ -n "$ZSH_VERSION" ]; then
+      local file_array
+      file_array=("${(@0)files}")
+    else
+      IFS=$'\0' read -rd '' -a file_array <<< "$files"
+    fi
+    nv "${file_array[@]}"
+  fi
 }
