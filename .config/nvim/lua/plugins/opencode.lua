@@ -6,9 +6,9 @@ return {
       {
         "folke/snacks.nvim",
         opts = {
-          input = {},
-          picker = {},
-          terminal = {},
+          input = { enabled = true },
+          picker = { enabled = true },
+          terminal = { enabled = true },
         },
       },
     },
@@ -23,12 +23,51 @@ return {
         return "snacks"
       end
 
-      local provider_name = detect_provider()
-      local provider_opts = { enabled = provider_name }
-      if provider_name == "kitty" then
-        provider_opts.kitty = {
-          location = "tab",
+      local function resolve_opencode_cmd()
+        local path = vim.fn.exepath("opencode")
+        if path ~= "" then
+          return string.format("%s --port", path)
+        end
+
+        local fallback_candidates = {
+          vim.fn.expand("~/.local/bin/opencode"),
+          vim.fn.expand("~/bin/opencode"),
+          "/usr/local/bin/opencode",
+          "/opt/homebrew/bin/opencode",
         }
+
+        for _, candidate in ipairs(fallback_candidates) do
+          if candidate ~= nil and candidate ~= "" and vim.fn.executable(candidate) == 1 then
+            return string.format("%s --port", candidate)
+          end
+        end
+
+        return nil
+      end
+
+      local provider_name = detect_provider()
+      local provider_opts = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.g.opencode_opts and vim.g.opencode_opts.provider or {},
+        {
+          enabled = provider_name,
+        }
+      )
+
+      if provider_name == "kitty" then
+        provider_opts.kitty = vim.tbl_deep_extend("force", {
+          location = "os-window",
+        }, provider_opts.kitty or {})
+      end
+
+      provider_opts.cmd = provider_opts.cmd or resolve_opencode_cmd()
+      if not provider_opts.cmd then
+        vim.notify(
+          "Could not locate the `opencode` executable; ensure it is installed or set `provider.cmd`.",
+          vim.log.levels.ERROR,
+          { title = "opencode.nvim" }
+        )
       end
 
       vim.g.opencode_opts = vim.tbl_deep_extend("force", {
@@ -55,7 +94,13 @@ return {
 
       local wk_ok, which_key = pcall(require, "which-key")
       if wk_ok then
-        which_key.add({ { "<leader>o", group = "OpenCode" } })
+        if type(which_key.add) == "function" then
+          which_key.add({ { "<leader>o", group = "OpenCode" } })
+        elseif type(which_key.register) == "function" then
+          which_key.register({
+            ["<leader>o"] = { name = "+OpenCode" },
+          })
+        end
       end
 
       map({ "n", "x" }, "<leader>oa", function()

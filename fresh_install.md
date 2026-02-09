@@ -79,7 +79,7 @@ fc-list | grep "0xProto"
 Some desktop only tools
 
 ```sh
-sudo apt install -y kitty terminator gnome-tweaks alacarte btop cargo \
+sudo apt install -y kitty ghostty terminator gnome-tweaks alacarte btop cargo \
 gdebi libreoffice-writer libreoffice-calc localsend meld
 ```
 
