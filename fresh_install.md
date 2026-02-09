@@ -86,8 +86,11 @@ gdebi libreoffice-writer libreoffice-calc localsend meld
 >**BEWARE:** Check if localsend is available in your distribution's repo.
 >I found it in Ubuntu 24.04, but not in 25.04.
 
-Don't mind about the looks of kitty or zsh right now, it will be sorted out
-after cloning .dotfiles
+Don't mind about the looks of kitty, ghostty or zsh right now, it will be
+sorted out after cloning .dotfiles.
+
+>**NOTE:** Keyboard shortcuts for ghostty are derived from terminator, which
+>I was using for a long time and I didn't want to fight my muscle memory.
 
 To setup git-delta and meld, insert these lines to your `~/.gitconfig`
 
