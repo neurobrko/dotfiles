@@ -30,11 +30,11 @@ keybind = ctrl+shift+page_down=next_tab
 keybind = ctrl+shift+p=toggle_command_palette
 keybind = ctrl+shift+backquote=toggle_quick_terminal
 
-# Alt+Ctrl+Shift+Arrow to resize splits (Terminator-style pane resizing)
-keybind = ctrl+shift+alt+arrow_up=resize_split:up,10
-keybind = ctrl+shift+alt+arrow_down=resize_split:down,10
-keybind = ctrl+shift+alt+arrow_left=resize_split:left,10
-keybind = ctrl+shift+alt+arrow_right=resize_split:right,10
+# Ctrl+Shift+H/J/K/L to resize splits (Vim-style pane resizing)
+keybind = ctrl+shift+h=resize_split:left,20
+keybind = ctrl+shift+j=resize_split:down,20
+keybind = ctrl+shift+k=resize_split:up,20
+keybind = ctrl+shift+l=resize_split:right,20
 
 # Quick tab overview like Terminator's tab switcher
 keybind = ctrl+shift+space=toggle_tab_overview

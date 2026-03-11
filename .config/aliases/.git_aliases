@@ -134,7 +134,6 @@ git_stash_list() {
 # git status
 fake_alias gst
 if [ -n "$BASH_VERSION" ]; then
-  # git status
   alias gst='git status'
 fi
 # git fetch all
@@ -147,6 +146,8 @@ fake_alias gd
 if [ -n "$BASH_VERSION" ]; then
   alias gd='git diff'
 fi
+# git diff classic with less pager
+alias gdc="git -c core.pager='less' diff"
 # git diff numbered
 alias gdn=git_diff_numbered
 # (with filenum works only in repo root)
@@ -174,6 +175,8 @@ alias gstd=git_stash_drop
 alias grs='git restore'
 # git restore by number from gdn
 alias grsn=git_restore_by_number
+# lazygit
+alias lg=lazygit
 # run pre-commit on changed files only
 alias pc='pre-commit run --files $(git diff --name-only)'
 # git profile
