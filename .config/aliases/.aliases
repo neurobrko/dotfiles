@@ -10,6 +10,8 @@ alias ll="eza -lag --icons=always --group-directories-first --smart-group --time
 alias dh='du -chs *'
 # yazi file manager
 alias y='yazi'
+# opencode
+alias oc='opencode'
 # preview/find file using fzf and bat
 alias pf='fzf --preview "bat --color=always {}"'
 # cd to dir using fuzzy finder (fzf)
@@ -43,6 +45,8 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ### Dev aliases
 # neovim (LazyVim)
 fake_alias nv
+# opencode bound to neovim with port 4096 for live share
+alias noc='opencode --port 4096'
 # open multiple files with fzf & bat in neovim
 alias fnv='nv $(find . -type f -not -path "*/\.git/*" -print | fzf -m --preview "bat --color=always {}")'
 # cd to nvim config folder

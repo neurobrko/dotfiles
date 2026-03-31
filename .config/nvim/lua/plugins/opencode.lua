@@ -8,74 +8,33 @@ return {
         opts = {
           input = { enabled = true },
           picker = { enabled = true },
-          terminal = { enabled = true },
         },
       },
     },
     config = function()
-      local function detect_provider()
-        if vim.env.TMUX and vim.env.TMUX ~= "" then
-          return "tmux"
-        end
-        if vim.env.KITTY_LISTEN_ON or vim.env.KITTY_MULTIPLEXER then
-          return "kitty"
-        end
-        return "snacks"
-      end
-
-      local function resolve_opencode_cmd()
-        local path = vim.fn.exepath("opencode")
-        if path ~= "" then
-          return string.format("%s --port", path)
-        end
-
-        local fallback_candidates = {
-          vim.fn.expand("~/.local/bin/opencode"),
-          vim.fn.expand("~/bin/opencode"),
-          "/usr/local/bin/opencode",
-          "/opt/homebrew/bin/opencode",
-        }
-
-        for _, candidate in ipairs(fallback_candidates) do
-          if candidate ~= nil and candidate ~= "" and vim.fn.executable(candidate) == 1 then
-            return string.format("%s --port", candidate)
-          end
-        end
-
-        return nil
-      end
-
-      local provider_name = detect_provider()
-      local provider_opts = vim.tbl_deep_extend(
-        "force",
-        {},
-        vim.g.opencode_opts and vim.g.opencode_opts.provider or {},
-        {
-          enabled = provider_name,
-        }
-      )
-
-      if provider_name == "kitty" then
-        provider_opts.kitty = vim.tbl_deep_extend("force", {
-          location = "os-window",
-        }, provider_opts.kitty or {})
-      end
-
-      provider_opts.cmd = provider_opts.cmd or resolve_opencode_cmd()
-      if not provider_opts.cmd then
-        vim.notify(
-          "Could not locate the `opencode` executable; ensure it is installed or set `provider.cmd`.",
-          vim.log.levels.ERROR,
-          { title = "opencode.nvim" }
-        )
-      end
-
-      vim.g.opencode_opts = vim.tbl_deep_extend("force", {
-        provider = provider_opts,
+      vim.g.opencode_opts = {
+        server = {
+          port = 4096,
+          start = function()
+            vim.notify(
+              "Start opencode externally with: opencode --port 4096",
+              vim.log.levels.INFO,
+              { title = "opencode.nvim" }
+            )
+          end,
+          stop = function() end,
+          toggle = function()
+            vim.notify(
+              "OpenCode runs externally. Start with: opencode --port 4096",
+              vim.log.levels.INFO,
+              { title = "opencode.nvim" }
+            )
+          end,
+        },
         ask = {
           submit = true,
         },
-      }, vim.g.opencode_opts or {})
+      }
 
       vim.o.autoread = true
 
